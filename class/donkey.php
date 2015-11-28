@@ -36,7 +36,7 @@ class Donkey {
 		if (Donkey::$allDonkeys === null) {
 			$donkey = new Donkey("1", "Warrior", Carter::getCarter("1"), "01/01/1970");
 			$donkey->picture = "pictures/1.jpg";
-			$donkey->features = "Lot of hairs.\nWhite in the left ear, black in the left one.";
+			$donkey->features = "Lot of hairs.\nWhite in the left ear, black in the right one.";
 			$donkey->details = "Healthy but quickly tired.";
 			Donkey::$allDonkeys[] = $donkey;
 			
