@@ -67,6 +67,7 @@ function formatNotifications(Donkey $donkey) {
 		<meta http-equiv="Content-Language" content="en" />
 		<meta http-equiv="Content-Script-Type" content="text/javascript" />
 		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<style type="text/css">
 			/* HTML 4 compatibility */
 			article, aside, figcaption, figure, footer, header, hgroup, nav, section {
