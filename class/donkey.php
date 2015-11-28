@@ -28,7 +28,7 @@ class Donkey {
 	}
 	
 	public function isNotificationActivated($property) {
-		return isset($this->notification[$property]) ? $this->notification[$property] : false;
+		return isset($this->notifications[$property]) ? $this->notifications[$property] : false;
 	}
 	
 	private static $allDonkeys = null;

@@ -8,16 +8,30 @@ ini_set('display_startup_errors', TRUE);
 require_once("class/carter.php");
 require_once("class/donkey.php");
 
-function formatDonkey(Donkey $donkey) {
+function formatDonkey(Donkey $donkey, $edit = false) {
 	$id = $donkey->id;
 	$name = $donkey->name;
-	return "<a href='?page=display&type=donkey&id=$id'>$name</a>";
+	$type = "donkey";
+	$string = "<a href='?page=display&type=$type&id=$id'>$name</a>";
+	if ($edit) {
+		$string .= " (<a href='?page=edit&type=$type&id=$id'>edit</a>)";
+	} else {
+		// no edit link
+	}
+	return $string;
 }
 
-function formatCarter(Carter $carter) {
+function formatCarter(Carter $carter, $edit = false) {
 	$id = $carter->id;
 	$name = $carter->name;
-	return "<a href='?page=display&type=carter&id=$id'>$name</a>";
+	$type = "carter";
+	$string = "<a href='?page=display&type=$type&id=$id'>$name</a>";
+	if ($edit) {
+		$string .= " (<a href='?page=edit&type=$type&id=$id'>edit</a>)";
+	} else {
+		// no edit link
+	}
+	return $string;
 }
 
 function formatPicture(Donkey $donkey) {
@@ -87,22 +101,22 @@ function formatNotifications(Donkey $donkey) {
 				Carters:
 				<ul>
 					<?php foreach(Carter::getAllCarters() as $carter) {
-						echo "<li>".formatCarter($carter)."</li>";
+						echo "<li>".formatCarter($carter, true)."</li>";
 					} ?>
 				</ul>
 				Donkeys:
 				<ul>
 					<?php foreach(Donkey::getAllDonkeys() as $donkey) {
-						echo "<li>".formatDonkey($donkey)."</li>";
+						echo "<li>".formatDonkey($donkey, true)."</li>";
 					} ?>
 				</ul>
 				<?php
-			} else if ($_GET['page'] == "input") {
-				require_once("input.php");
+			} else if ($_GET['page'] == "edit") {
+				require_once("edit.php");
 			} else if ($_GET['page'] == "display") {
 				require_once("display.php");
 			} else {
-				echo "PAGE: ".$_GET['page'];
+				throw new Exception("Unknoan page: ".$_GET['page']);;
 			}
 			?>
 		</section>
