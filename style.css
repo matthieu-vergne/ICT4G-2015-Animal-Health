@@ -14,13 +14,29 @@
 	margin-bottom: 1em;
 }
 
+#qrcode {
+	max-width: 20%;
+	display: block;
+	float: right;
+}
+
 @media screen and (min-width: 480px) {
 	#mobile {
 		display: none;
 		visibility: hidden;
 	}
 	.donkeyPicture {
-		max-height: 300px;
+		display: block;
+		float: right;
+		clear: right;
+		max-width: 50%;
+	}
+	#main {
+		width: 60%;
+		border: solid #007248 1px;
+		margin: auto;
+		padding: 1em;
+		overflow: auto;
 	}
 }
 

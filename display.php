@@ -28,6 +28,8 @@ if (!isset($_GET['type'])) {
 	} else {
 		?>
 		<section id="desktop">
+			<img id="qrcode" src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=<?php echo urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]")?>&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L" alt="QR Code" />
+			<?php echo formatPicture($donkey)?>
 			<span class="label">ID:</span> <?php echo $donkey->id?><br/>
 			<span class="label">Name:</span> <?php echo $donkey->name?><br/>
 			<span class="label">Owner:</span>  <?php echo formatCarter($donkey->owner)?><br/>
@@ -35,7 +37,6 @@ if (!isset($_GET['type'])) {
 			<span class="label">Address:</span><br/><?php echo nl2br($donkey->owner->address)?><br/>
 			<span class="label">Birth date:</span> <?php echo $donkey->birth?><br/>
 			<br/>
-			<span class="label">Picture:</span><br/><?php echo formatPicture($donkey)?><br/>
 			<span class="label">Distinguishing features:</span><br/><?php echo nl2br($donkey->features)?><br/>
 			<br/>
 			<span class="label">Special care:</span> <?php echo formatNotifications($donkey)?><br/>
