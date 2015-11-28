@@ -20,11 +20,11 @@ class Donkey {
 	}
 	
 	public function activateNotification($property) {
-		$this->notification[$property] = true;
+		$this->notifications[$property] = true;
 	}
 	
 	public function deactivateNotification($property) {
-		$this->notification[$property] = false;
+		$this->notifications[$property] = false;
 	}
 	
 	public function isNotificationActivated($property) {
@@ -36,15 +36,15 @@ class Donkey {
 		if (Donkey::$allDonkeys === null) {
 			$donkey = new Donkey("1", "Warrior", Carter::getCarter("1"), "01/01/1970");
 			$donkey->picture = "pictures/1.jpg";
-			$donkey->features = "";
-			$donkey->details = "";
+			$donkey->features = "Lot of hairs.\nWhite in the left ear, black in the left one.";
+			$donkey->details = "Healthy but quickly tired.";
 			Donkey::$allDonkeys[] = $donkey;
 			
 			$donkey = new Donkey("2", "Dunk", Carter::getCarter("2"), "01/01/1970");
 			$donkey->picture = "pictures/2.jpg";
-			$donkey->features = "";
+			$donkey->features = "I tried to find some but failed...";
 			$donkey->activateNotification(Donkey::SICK);
-			$donkey->details = "";
+			$donkey->details = "Develop some allergies to carrots making him smile all the time.";
 			Donkey::$allDonkeys[] = $donkey;
 		}
 		

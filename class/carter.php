@@ -17,16 +17,28 @@ class Carter {
 		if (Carter::$allCarters === null) {
 			$carter = new Carter("1", "S'thembile Nzwana");
 			$carter->phone = "0123456789";
-			$carter->address = "In my street,\nIn my city!";
+			$carter->address = "In my street,\nin my city!";
 			Carter::$allCarters[] = $carter;
 			
 			$carter = new Carter("2", "Mickey Mouse");
-			$carter->phone = "0123456789";
-			$carter->address = "In my street,\nIn my city!";
+			$carter->phone = "9876543210";
+			$carter->address = "In another street,\nbut in the same city!";
 			Carter::$allCarters[] = $carter;
 		}
 		
 		return Carter::$allCarters;
+	}
+	
+	public function getDonkeys() {
+		$donkeys = array();
+		foreach(Donkey::getAllDonkeys() as $donkey) {
+			if ($donkey->owner == $this) {
+				$donkeys[] = $donkey;
+			} else {
+				// irrelevant donkey
+			}
+		}
+		return $donkeys;
 	}
 	
 	public static function getCarter($id) {

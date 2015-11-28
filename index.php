@@ -7,6 +7,43 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', TRUE);
 require_once("class/carter.php");
 require_once("class/donkey.php");
+
+function formatDonkey(Donkey $donkey) {
+	$id = $donkey->id;
+	$name = $donkey->name;
+	return "<a href='?page=display&type=donkey&id=$id'>$name</a>";
+}
+
+function formatCarter(Carter $carter) {
+	$id = $carter->id;
+	$name = $carter->name;
+	return "<a href='?page=display&type=carter&id=$id'>$name</a>";
+}
+
+function formatPicture(Donkey $donkey) {
+	if ($donkey->picture === null) {
+		return "&lt;none&gt;";
+	} else {
+		return "<img class='donkeyPicture' src='".$donkey->picture."' alt='".$donkey->name."'>";
+	}
+}
+
+function formatNotifications(Donkey $donkey) {
+	$string = "";
+	foreach($donkey->notifications as $property => $isActive) {
+		if ($isActive) {
+			$string .= $property." ";
+		} else {
+			// not active, ignore
+		}
+	}
+	if (strlen($string) == 0) {
+		return "&lt;none&gt;";
+	} else {
+		return $string;
+	}
+}
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -46,7 +83,20 @@ require_once("class/donkey.php");
 		<section id="main">
 			<?php
 			if (!isset($_GET['page'])) {
-				echo "INDEX";
+				?>
+				Carters:
+				<ul>
+					<?php foreach(Carter::getAllCarters() as $carter) {
+						echo "<li>".formatCarter($carter)."</li>";
+					} ?>
+				</ul>
+				Donkeys:
+				<ul>
+					<?php foreach(Donkey::getAllDonkeys() as $donkey) {
+						echo "<li>".formatDonkey($donkey)."</li>";
+					} ?>
+				</ul>
+				<?php
 			} else if ($_GET['page'] == "input") {
 				require_once("input.php");
 			} else if ($_GET['page'] == "display") {
