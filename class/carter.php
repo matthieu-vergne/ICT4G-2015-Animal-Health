@@ -16,13 +16,13 @@ class Carter {
 	public static function getAllCarters() {
 		if (Carter::$allCarters === null) {
 			$carter = new Carter("1", "S'thembile Nzwana");
-			$carter->phone = "0123456789";
-			$carter->address = "In my street,\nin my city!";
+			$carter->phone = "083*****12";
+			$carter->address = "23 Fifth Street\nJoza";
 			Carter::$allCarters[] = $carter;
 			
-			$carter = new Carter("2", "Mickey Mouse");
-			$carter->phone = "9876543210";
-			$carter->address = "In another street,\nbut in the same city!";
+			$carter = new Carter("2", "Joe Pretorius");
+			$carter->phone = "083*****34";
+			$carter->address = "12 High Street\nSun City";
 			Carter::$allCarters[] = $carter;
 		}
 		

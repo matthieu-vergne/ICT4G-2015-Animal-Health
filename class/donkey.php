@@ -34,17 +34,17 @@ class Donkey {
 	private static $allDonkeys = null;
 	public static function getAllDonkeys() {
 		if (Donkey::$allDonkeys === null) {
-			$donkey = new Donkey("1", "Warrior", Carter::getCarter("1"), "01/01/1970");
+			$donkey = new Donkey("1", "Warrior", Carter::getCarter("1"), "21/11/2000");
 			$donkey->picture = "pictures/1.jpg";
-			$donkey->features = "Lot of hairs.\nWhite in the left ear, black in the right one.";
-			$donkey->details = "Healthy but quickly tired.";
+			$donkey->features = "Wound on the front right knee.";
+			$donkey->details = "Healthy.";
 			Donkey::$allDonkeys[] = $donkey;
 			
-			$donkey = new Donkey("2", "Dunk", Carter::getCarter("2"), "01/01/1970");
+			$donkey = new Donkey("2", "Dunk", Carter::getCarter("2"), "05/03/2009");
 			$donkey->picture = "pictures/2.jpg";
-			$donkey->features = "I tried to find some but failed...";
-			$donkey->activateNotification(Donkey::SICK);
-			$donkey->details = "Develop some allergies to carrots making him smile all the time.";
+			$donkey->features = "Left ear cut at the top.";
+			$donkey->activateNotification(Donkey::PREGNANT);
+			$donkey->details = "- Avoid any medication.\n- Don't attach to cart.";
 			Donkey::$allDonkeys[] = $donkey;
 		}
 		

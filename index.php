@@ -95,29 +95,31 @@ function formatNotifications(Donkey $donkey) {
 		</script>
 	</head>
 	<body>
+		<header>
+			<img id="logo" src="https://static.wixstatic.com/media/c7afb0_828976c1bebd455cb7c97bdb5947f5be.png/v1/fit/w_65,h_88,usm_0.50_1.20_0.00/c7afb0_828976c1bebd455cb7c97bdb5947f5be.png">
+			Farmed Animal Centre for Education<br/>
+			Donkey Carter Support
+		</header>
+		<nav>
+			<a href="?page=home">Home</a>
+			<a href="?page=carters">Carters</a>
+			<a href="?page=donkeys">Donkeys</a>
+		</nav>
 		<section id="main">
 			<?php
-			if (!isset($_GET['page'])) {
-				?>
-				Carters:
-				<ul>
-					<?php foreach(Carter::getAllCarters() as $carter) {
-						echo "<li>".formatCarter($carter, true)."</li>";
-					} ?>
-				</ul>
-				Donkeys:
-				<ul>
-					<?php foreach(Donkey::getAllDonkeys() as $donkey) {
-						echo "<li>".formatDonkey($donkey, true)."</li>";
-					} ?>
-				</ul>
-				<?php
-			} else if ($_GET['page'] == "edit") {
+			$page = isset($_GET['page']) ? $_GET['page'] : "home";
+			if ($page == "carters") {
+				require_once("carters.php");
+			} else if ($page == "donkeys") {
+				require_once("donkeys.php");
+			} else if ($page == "edit") {
 				require_once("edit.php");
-			} else if ($_GET['page'] == "display") {
+			} else if ($page == "display") {
 				require_once("display.php");
+			} else if ($page == "home") {
+				require_once("home.php");
 			} else {
-				throw new Exception("Unknoan page: ".$_GET['page']);;
+				throw new Exception("Unknown page: ".$page);;
 			}
 			?>
 		</section>

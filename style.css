@@ -20,6 +20,56 @@
 	float: right;
 }
 
+header {
+	font: normal normal normal 45px/1.4em 'Chelsea Market',fantasy;
+	color: #292929;
+	text-align: center;
+}
+
+header #logo {
+	display: block;
+	float: right;
+	margin: 0.5em 0;
+}
+
+#mobile #logo {
+	display: block;
+	float: right;
+	margin: 0.1em 0 0 0.1em;
+}
+
+nav {
+	display: block;
+	background-color: #89B336;
+	text-align: center;
+}
+
+nav a {
+	display: inline-block;
+	padding: 1em 5em;
+	text-decoration: none;
+	font: normal normal bold 12px/1.4em Signika,sans-serif;
+	color: #292929;
+	text-transform: uppercase;
+}
+
+nav a:hover {
+	background-color: #B4CC85;
+	color: #D1D1D1;
+}
+
+#main {
+	border: solid rgb(41, 41, 41) 3px;
+	padding: 1em;
+	overflow: auto;
+	color: #292929;
+	background-color: #FABF52;
+}
+
+.donkeyPicture {
+	border: solid rgb(41, 41, 41) 1px;
+}
+
 @media screen and (min-width: 480px) {
 	#mobile {
 		display: none;
@@ -29,14 +79,12 @@
 		display: block;
 		float: right;
 		clear: right;
+		margin-top: 1em;
 		max-width: 50%;
 	}
-	#main {
-		width: 60%;
-		border: solid #007248 1px;
+	body{
+		max-width: 800px;
 		margin: auto;
-		padding: 1em;
-		overflow: auto;
 	}
 }
 
@@ -44,11 +92,16 @@
 	body {
 		width: 100%;
 	}
-	#homeLink, #desktop {
+	#homeLink, #desktop, header, nav {
 		display: none;
 		visibility: hidden;
 	}
 	.donkeyPicture {
 		max-width: 100%;
+	}
+	#main {
+		border-width: 1px;
+		margin: 0;
+		margin-right: 5%; /* fix misfitting between viewport and screen */
 	}
 }

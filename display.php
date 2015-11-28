@@ -13,12 +13,15 @@ if (!isset($_GET['type'])) {
 		<span class="label">Name:</span> <?php echo $carter->name?><br/>
 		<span class="label">Phone number:</span> <?php echo $carter->phone?><br/>
 		<span class="label">Address:</span><br/><?php echo nl2br($carter->address)?><br/>
+		<br/>
 		<span class="label">Donkeys:</span><br/>
+		<ul>
 		<?php
 		foreach($carter->getDonkeys() as $donkey) {
-			echo formatDonkey($donkey);
+			echo "<li>".formatDonkey($donkey)."</li>";
 		}
-		?><br/>
+		?>
+		</ul>
 		<?php
 	}
 } else if ($_GET['type'] == "donkey") {
@@ -32,10 +35,11 @@ if (!isset($_GET['type'])) {
 			<?php echo formatPicture($donkey)?>
 			<span class="label">ID:</span> <?php echo $donkey->id?><br/>
 			<span class="label">Name:</span> <?php echo $donkey->name?><br/>
+			<span class="label">Birth date:</span> <?php echo $donkey->birth?><br/>
+			<br/>
 			<span class="label">Owner:</span>  <?php echo formatCarter($donkey->owner)?><br/>
 			<span class="label">Phone number:</span> <?php echo $donkey->owner->phone?><br/>
 			<span class="label">Address:</span><br/><?php echo nl2br($donkey->owner->address)?><br/>
-			<span class="label">Birth date:</span> <?php echo $donkey->birth?><br/>
 			<br/>
 			<span class="label">Distinguishing features:</span><br/><?php echo nl2br($donkey->features)?><br/>
 			<br/>
@@ -52,7 +56,7 @@ if (!isset($_GET['type'])) {
 					echo "<span class='alert'>Injured donkey, please pay attention!</span>";
 				}
 				if ($donkey->isNotificationActivated(Donkey::PREGNANT)) {
-					echo "<span class='alert'>Sick donkey, please pay attention!</span>";
+					echo "<span class='alert'>Pregnant donkey, please pay attention!</span>";
 				}
 			?>
 			<p>
@@ -62,6 +66,7 @@ if (!isset($_GET['type'])) {
 			<span class="label">Address:</span><br/><?php echo nl2br($donkey->owner->address)?><br/>
 			
 			<p>If you cannot contact the owner, please contact the Farm Animal Centre for Education (FACE).</p>
+			<img id="logo" src="https://static.wixstatic.com/media/c7afb0_828976c1bebd455cb7c97bdb5947f5be.png/v1/fit/w_65,h_88,usm_0.50_1.20_0.00/c7afb0_828976c1bebd455cb7c97bdb5947f5be.png">
 			<span class="label"><?php echo $donkey->name?>'s ID:</span> <?php echo $donkey->id?><br/>
 			<span class="label">FACE contact:</span><br/><?php echo nl2br("FACE\naddress")?><br/>
 		</section>
