@@ -1,28 +1,17 @@
 <?php
-function formatDonkey(Donkey $donkey, $edit = false) {
-	$id = $donkey->id;
-	$name = $donkey->name;
-	$type = "donkey";
-	$string = "<a href='?page=display&type=$type&id=$id'>$name</a>";
-	if ($edit) {
-		$string .= " (<a href='?page=edit&type=$type&id=$id'>edit</a>)";
-	} else {
-		// no edit link
-	}
-	return $string;
+function formatDonkey(Donkey $donkey, $edit = false, $text = null) {
+	$text = $text === null ? $donkey->name : $text;
+	return formatDisplay($edit, "donkey", $donkey->id, $text);
 }
 
-function formatCarter(Carter $carter, $edit = false) {
-	$id = $carter->id;
-	$name = $carter->name;
-	$type = "carter";
-	$string = "<a href='?page=display&type=$type&id=$id'>$name</a>";
-	if ($edit) {
-		$string .= " (<a href='?page=edit&type=$type&id=$id'>edit</a>)";
-	} else {
-		// no edit link
-	}
-	return $string;
+function formatCarter(Carter $carter, $edit = false, $text = null) {
+	$text = $text === null ? $carter->name : $text;
+	return formatDisplay($edit, "carter", $carter->id, $text);
+}
+
+function formatDisplay($edit, $type, $id, $text) {
+	$page = $edit ? "edit" : "display";
+	return "<a href='?page=$page&type=$type&id=$id'>$text</a>";
 }
 
 function formatPicture(Donkey $donkey) {

@@ -1,4 +1,3 @@
-<a id="homeLink" href="?">Home</a>
 <?php
 if (!isset($_GET['type'])) {
 	throw new Exception("No type provided");
@@ -10,6 +9,8 @@ if (!isset($_GET['type'])) {
 		throw Exception("Carter not found: "+$_GET['id']);
 	} else {
 		?>
+		<?php echo formatCarter($carter, true, "Modify")?><br/>
+		<br/>
 		<span class="label">Name:</span> <?php echo $carter->name?><br/>
 		<span class="label">Phone number:</span> <?php echo $carter->phone?><br/>
 		<span class="label">Address:</span><br/><?php echo nl2br($carter->address)?><br/>
@@ -33,6 +34,9 @@ if (!isset($_GET['type'])) {
 		<section id="desktop">
 			<img id="qrcode" src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=<?php echo urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]")?>&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L" alt="QR Code" />
 			<?php echo formatPicture($donkey)?>
+			
+			<?php echo formatDonkey($donkey, true, "Modify")?><br/>
+			<br/>
 			<span class="label">ID:</span> <?php echo $donkey->id?><br/>
 			<span class="label">Name:</span> <?php echo $donkey->name?><br/>
 			<span class="label">Birth date:</span> <?php echo $donkey->birth?><br/>
@@ -46,7 +50,14 @@ if (!isset($_GET['type'])) {
 			<span class="label">Special care:</span> <?php echo formatNotifications($donkey)?><br/>
 			<span class="label">Detailed condition and treatments:</span><br/><?php echo nl2br($donkey->details)?><br/>
 			<span class="label">Last treatment:</span> (<a href="?page=history&id=<?php echo $donkey->id?>">history</a>)<br/>
-			<?php $t = Treatment::getLastTreatmentFor($donkey); echo $t->date.": ".$t->comment;?><br/>
+			<?php
+				$t = Treatment::getLastTreatmentFor($donkey);
+				if ($t == null) {
+					echo "No treatments.";
+				} else {
+					echo $t->date.": ".$t->comment;
+				}
+			?><br/>
 		</section>
 		<section id="mobile">
 			<?php echo formatPicture($donkey)?>
