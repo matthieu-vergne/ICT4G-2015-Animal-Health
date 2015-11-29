@@ -7,56 +7,8 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', TRUE);
 require_once("class/carter.php");
 require_once("class/donkey.php");
-
-function formatDonkey(Donkey $donkey, $edit = false) {
-	$id = $donkey->id;
-	$name = $donkey->name;
-	$type = "donkey";
-	$string = "<a href='?page=display&type=$type&id=$id'>$name</a>";
-	if ($edit) {
-		$string .= " (<a href='?page=edit&type=$type&id=$id'>edit</a>)";
-	} else {
-		// no edit link
-	}
-	return $string;
-}
-
-function formatCarter(Carter $carter, $edit = false) {
-	$id = $carter->id;
-	$name = $carter->name;
-	$type = "carter";
-	$string = "<a href='?page=display&type=$type&id=$id'>$name</a>";
-	if ($edit) {
-		$string .= " (<a href='?page=edit&type=$type&id=$id'>edit</a>)";
-	} else {
-		// no edit link
-	}
-	return $string;
-}
-
-function formatPicture(Donkey $donkey) {
-	if ($donkey->picture === null) {
-		return "&lt;none&gt;";
-	} else {
-		return "<img class='donkeyPicture' src='".$donkey->picture."' alt='".$donkey->name."'>";
-	}
-}
-
-function formatNotifications(Donkey $donkey) {
-	$string = "";
-	foreach($donkey->notifications as $property => $isActive) {
-		if ($isActive) {
-			$string .= $property." ";
-		} else {
-			// not active, ignore
-		}
-	}
-	if (strlen($string) == 0) {
-		return "&lt;none&gt;";
-	} else {
-		return $string;
-	}
-}
+require_once("class/treatment.php");
+require_once("format.php");
 
 ?>
 <!DOCTYPE html>
@@ -118,6 +70,8 @@ function formatNotifications(Donkey $donkey) {
 				require_once("display.php");
 			} else if ($page == "home") {
 				require_once("home.php");
+			} else if ($page == "history") {
+				require_once("history.php");
 			} else {
 				throw new Exception("Unknown page: ".$page);;
 			}

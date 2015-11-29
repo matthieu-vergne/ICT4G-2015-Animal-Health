@@ -45,6 +45,8 @@ if (!isset($_GET['type'])) {
 			<br/>
 			<span class="label">Special care:</span> <?php echo formatNotifications($donkey)?><br/>
 			<span class="label">Detailed condition and treatments:</span><br/><?php echo nl2br($donkey->details)?><br/>
+			<span class="label">Last treatment:</span> (<a href="?page=history&id=<?php echo $donkey->id?>">history</a>)<br/>
+			<?php $t = Treatment::getLastTreatmentFor($donkey); echo $t->date.": ".$t->comment;?><br/>
 		</section>
 		<section id="mobile">
 			<?php echo formatPicture($donkey)?>
