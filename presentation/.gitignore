@@ -1,0 +1,16 @@
+*~
+*.backup
+*.kate-swp
+*.log
+*.loa
+*.lof
+*.lot
+*.nav
+*.snm
+*.aux
+*.out
+*.toc
+presentation.pdf
+.~lock.*
+.goutputstream-*
+.fuse_*

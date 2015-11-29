@@ -1,0 +1,231 @@
+\documentclass{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{color}
+\usepackage{natbib}
+\usepackage{pgf}
+\usepackage{xspace}
+\xspaceaddexceptions{]\}}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning}
+\usepackage{ulem}
+\usepackage{hyperref}
+\usepackage{textpos}
+% \usepackage{beamerthemeshadow}
+\usetheme{Warsaw}
+\usepackage{lmodern}
+\usepackage{mathtools}
+% \everymath{\displaystyle}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{ifdraft}
+\setkeys{Gin}{draft=false}% force the display of graphics, even for draft mode
+
+\usetikzlibrary{positioning}
+\makeatletter
+\def\normaljustify{%
+  \let\\\@centercr
+  \rightskip\z@skip
+  \leftskip\z@skip%
+  \parfillskip=0pt plus 1.0fil\relax
+}
+\makeatother
+
+\mode<presentation>{
+  \usetheme{Berlin}
+  \setbeamercovered{invisible}
+  \defbeamertemplate*{footline}{shadow theme}{
+    \leavevmode
+    \hbox{
+      \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}
+	\usebeamerfont{title in head/foot}\insertshorttitle\hfill\insertframenumber / \inserttotalframenumber
+      \end{beamercolorbox}
+    }
+    \hbox{
+      \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}
+	\usebeamerfont{author in head/foot}\insertshortauthor\hfill\insertshortinstitute
+      \end{beamercolorbox}
+    }
+    \vskip0pt
+  }
+%   \addtobeamertemplate{frametitle}{}{
+%     \begin{textblock*}{30mm}(.8\textwidth,-7mm)
+%       \includegraphics[height=6mm,keepaspectratio]{figures/logo-fbk}
+%       \hfill
+%       \includegraphics[height=6mm,keepaspectratio]{figures/logo-ict}
+%     \end{textblock*}
+%   }
+  \setbeamerfont*{itemize/enumerate body}{size=\normalsize}
+  \setbeamerfont*{itemize/enumerate subbody}{size=\footnotesize,shape=\itshape}
+%   \setbeamertemplate{frametitle}[shadow]
+}
+
+\newcommand{\email}[1]{\href{mailto:#1}{\nolinkurl{#1}}}
+\DeclareRobustCommand{\todo}[1]{\ifdraft{\textbf{\textcolor{red}{[#1]}}}{}}
+\newcommand\credits[2][]{%
+  \ifx&#1&%
+  \def\x{}
+  \else%
+  \def\x{{#1}: }
+  \fi%
+  \begingroup%
+  \renewcommand\thefootnote{}\footnote{{\x}{\textcopyright}#2}%
+  \addtocounter{footnote}{-1}%
+  \endgroup%
+}
+% \renewcommand{\todo}[1]{}
+\def\newblock{\hskip .11em plus .33em minus .07em} %trick to avoid undefined command with bibtex
+\def\randomSeed{1138}
+
+\title{Animal Health: \\Donkey Carter Support}
+\author[Matthieu Vergne (\email{matthieu.vergne@gmail.com})]{
+  \textbf{Matthieu Vergne}
+  \texorpdfstring{\\ \tiny{\email{vergne@fbk.eu}}}{}
+}
+\date{November 29$^{th}$, 2015}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[currentsubsection, sectionstyle=show, subsectionstyle=show]
+\end{frame}
+
+
+\section{Context}
+\subsection{}
+
+\begin{frame}
+\begin{itemize}
+ \item Grahamstown, $\sim$70k people
+ \pause
+ \item Many people use donkeys for getting income
+ \pause
+ \item Donkey carters rely exclusiveley on them
+ \pause
+ \item Need to take care of donkeys
+ \pause
+ \item Donkeys are wild animals: go around, get injured, etc.
+ \pause
+ \item SPCA can catch donkeys and fine donkey carters
+ \begin{itemize}
+  \item SPCA = Society for the Prevention of Cruelty to Animals
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Problem}
+\subsection{}
+
+\begin{frame}
+\begin{alertblock}{Hard for donkey carters to take care of their donkeys}
+\pause
+In particular:
+\begin{itemize}
+ \item Donkey carters unable to afford medical care for donkeys
+ \pause
+ \item Not equiped to find missing donkeys
+ \pause
+ \item Unable to afford SPCA fines
+ \pause
+ \item Mobile phones, but no Internet + calls/SMSs are costly
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\section{Solution}
+\subsection{}
+
+\begin{frame}
+Goal: extend FACE capabilities
+\begin{itemize}
+ \item FACE = Farm Animal Centre for Education
+ \pause
+ \item Veterinary and welfare experts available
+ \pause
+ \item Good relationships with donkey carters
+ \pause
+ \item Donkey care actions and records
+\end{itemize}
+~\\
+\pause
+Support in:
+\begin{itemize}
+ \item Minimize wandering of donkeys in town
+ \pause
+ \item Donkey identification + donkey carter contact
+ \pause
+ \item Data management + information flow
+\end{itemize}
+\end{frame}
+
+\section{Demo}
+\subsection{}
+
+\begin{frame}
+\begin{center}
+DEMO
+\end{center}
+~\\
+\begin{itemize}
+ \item Data management
+ \pause
+ \item Information flow
+ \pause
+ \item Donkey identification + donkey carter contact
+\end{itemize}
+\end{frame}
+
+\section{Strengths \& Future Works}
+\subsection{}
+
+\begin{frame}
+Strengths:
+\begin{itemize}
+ \item Build on FACE infrastructure
+ \pause
+ \item Provide simple donkey identification
+ \pause
+ \item Notifies important aspects
+ \pause
+ \item Don't require donkey carter initiative
+\end{itemize}
+~\\
+\pause
+Future works:
+\begin{itemize}
+ \item Database \& user authentication
+ \pause
+ \item Provide care information to donkey carters
+ \begin{itemize}
+  \item Some have smartphones
+  \item Spread info in subcommunities
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+Thanks for your attention.\\
+~\\
+Questions?\\
+% \nocite{*}
+\end{center}
+\end{frame}
+
+\appendix
+\newcounter{finalframe}
+\setcounter{finalframe}{\value{framenumber}}
+
+% \bibliographystyle{abbrvnat}
+% \scriptsize
+% \bibliography{citations}
+
+\setcounter{framenumber}{\value{finalframe}}
+\end{document}
