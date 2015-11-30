@@ -35,13 +35,13 @@ class Donkey {
 	public static function getAllDonkeys() {
 		if (Donkey::$allDonkeys === null) {
 			$donkey = new Donkey("1", "Warrior", Carter::getCarter("1"), "21/11/2000");
-			$donkey->picture = "pictures/1.jpg";
+			$donkey->picture = "https://mundabor.files.wordpress.com/2014/10/donkey.jpg";
 			$donkey->features = "Wound on the front right knee.";
 			$donkey->details = "Healthy.";
 			Donkey::$allDonkeys[] = $donkey;
 			
 			$donkey = new Donkey("2", "Dunk", Carter::getCarter("2"), "05/03/2009");
-			$donkey->picture = "pictures/2.jpg";
+			$donkey->picture = "http://samaawww.edge.scaleengine.net/wp-content/uploads/2015/09/donkey-hide.jpg";
 			$donkey->features = "Left ear cut at the top.";
 			$donkey->activateNotification(Donkey::PREGNANT);
 			$donkey->details = "- Avoid any medication.\n- Don't attach to cart.";

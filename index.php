@@ -61,17 +61,17 @@ require_once("format.php");
 			<?php
 			$page = isset($_GET['page']) ? $_GET['page'] : "home";
 			if ($page == "carters") {
-				require_once("carters.php");
+				require_once("page/carters.php");
 			} else if ($page == "donkeys") {
-				require_once("donkeys.php");
+				require_once("page/donkeys.php");
 			} else if ($page == "edit") {
-				require_once("edit.php");
+				require_once("page/edit.php");
 			} else if ($page == "display") {
-				require_once("display.php");
+				require_once("page/display.php");
 			} else if ($page == "home") {
-				require_once("home.php");
+				require_once("page/home.php");
 			} else if ($page == "history") {
-				require_once("history.php");
+				require_once("page/history.php");
 			} else {
 				throw new Exception("Unknown page: ".$page);;
 			}
